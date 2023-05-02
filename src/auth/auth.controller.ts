@@ -1,5 +1,6 @@
-import { Controller, Post, Req } from '@nestjs/common';
+import { Body, Controller, Post, Req } from '@nestjs/common';
 import AuthService from './auth.service';
+import { authDto } from './dto';
 
 @Controller('auth')
 class AuthController {
@@ -11,9 +12,8 @@ class AuthController {
   }
 
   @Post('singin')
-  singin(@Req() reg: Request) {
-    console.log(reg.body);
-    return this.authService.singin();
+  singin(@Body() dto: authDto) {
+    return this.authService.singin(dto);
   }
 }
 
