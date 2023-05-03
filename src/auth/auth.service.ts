@@ -9,7 +9,7 @@ class AuthService {
   singin(body: authDto) {
     return this.prisma.user.create({
       data: {
-        name: body.name,
+        email: body.email,
         password: body.password,
       },
     });
